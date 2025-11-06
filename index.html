@@ -20,7 +20,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 24px 48px;
+      padding: 20px 28px;
       position: sticky;
       top: 0;
       background: white;
@@ -33,6 +33,11 @@
       font-size: 1.2rem;
       letter-spacing: 1px;
       color: #000;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
     }
 
     nav a {
@@ -60,6 +65,52 @@
 
     nav a:hover::after {
       width: 100%;
+    }
+
+    /* ---------- Mobile Hamburger ---------- */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      cursor: pointer;
+      width: 28px;
+      height: 24px;
+    }
+
+    .bar {
+      height: 3px;
+      width: 100%;
+      background: #000;
+      margin: 3px 0;
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        background: white;
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        border-top: 1px solid #eee;
+        padding: 20px 0;
+      }
+
+      nav a {
+        margin: 12px 0;
+        text-align: center;
+      }
+
+      nav.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
     }
 
     /* ---------- Layout ---------- */
@@ -212,9 +263,19 @@
 <body>
   <header>
     <div class="logo">FICTRPRENEUR</div>
+
+    <div class="menu-toggle" id="mobile-menu">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+
     <nav>
       <a href="index.html">Our Purpose</a>
       <a href="founder-note.html">Founder Note</a>
+      <a href="contact.html">Contact</a>
+      <a href="terms.html">Terms</a>
+      <a href="privacy.html">Privacy</a>
     </nav>
   </header>
 
@@ -233,17 +294,6 @@
     <h2>Until opportunity became accessible.</h2>
     <p>At Fictrpreneur, we’re turning belief into structure. We are building <mark>a system for the underdogs</mark> — for those who are ready to start but have no door to knock on. Because <mark>opportunity shouldn’t depend on privilege.</mark></p>
 
-    <h2>Breaking the barrier between ambition and opportunity.</h2>
-    <p>Ambition without access dies too early. But when <mark>belief meets guidance</mark>, everything changes. That’s why we exist — to be the bridge between the will to start and the path to sustain.</p>
-
-    <h2>Fictrpreneur is for those who...</h2>
-    <p>...don’t have networks.<br>
-    ...don’t come from privilege.<br>
-    ...don’t have investors yet.<br>
-    ...are <mark>learning by doing</mark>.<br>
-    ...but have the <mark>discipline to keep going.</mark></p>
-
-    <h2>What we provide to them.</h2>
     <div class="visuals">
       <div class="visual">
         <img src="https://cdn-icons-png.flaticon.com/512/2942/2942317.png" alt="Mentorship Icon" />
@@ -262,21 +312,7 @@
       </div>
     </div>
 
-    <h2>Greatness doesn’t begin at unicorn boards.</h2>
-    <p>It begins in <mark>tiny shops, borrowed laptops, and unpaid dreams.</mark>  
-    We’ve seen enough glorified exits. It’s time to glorify entries — the courage to start.</p>
-
-    <h2>Fictrpreneur is not just a platform — it’s a movement.</h2>
-    <p>We’re building a new kind of ecosystem — one that <mark>believes before it rewards,</mark> that mentors before it judges, that funds before it doubts.</p>
-
-    <h2>This isn’t about ideas. It’s about people.</h2>
-    <p>We exist to turn ambition into access. To help <mark>real builders start small, grow smart, and stay consistent.</mark>  
-    Because belief without a system fades. But belief with a structure? That’s transformation.</p>
-
     <h2>We choose to build that structure.</h2>
-    <p>For the hustlers. For the learners. For the first-timers.  
-    For those who believe they can start something that matters.</p>
-
     <p><mark>Fictrpreneur is where they start.</mark></p>
   </main>
 
@@ -288,5 +324,15 @@
       <a href="terms.html">Terms & Conditions</a>
     </div>
   </footer>
+
+  <script>
+    // Mobile menu toggle
+    const mobileMenu = document.getElementById("mobile-menu");
+    const nav = document.querySelector("nav");
+
+    mobileMenu.addEventListener("click", () => {
+      nav.classList.toggle("active");
+    });
+  </script>
 </body>
 </html>
